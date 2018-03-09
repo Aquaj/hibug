@@ -1,0 +1,17 @@
+GEM
+  specs:
+    debug_inspector (0.0.3)
+    minitest (5.11.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  debug_inspector
+  minitest
+
+RUBY VERSION
+   ruby 2.3.4p301
+
+BUNDLED WITH
+   1.16.1
