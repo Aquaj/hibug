@@ -20,6 +20,10 @@ module TestHelper
   ensure
     $stdin = original
   end
+
+  def assert_printed_out(reference, received)
+    assert_equal reference + "\n", received
+  end
 end
 
 class Minitest::Test
