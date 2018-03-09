@@ -13,4 +13,11 @@ class REPLTest < Minitest::Test
     out, _err = capture_io { run_with_stdin(stdin) { repl_launch } }
     assert_printed_out "I have been read".inspect, out
   end
+
+  def test_the_repl_is_bound_to_the_current_environment
+    test_subject = "I have been read in the wrong context"
+    stdin = stub_stdin %q[test_subject.gsub(%r[wrong], 'right')]
+    out, _err = capture_io { run_with_stdin(stdin) { repl_launch } }
+    assert_printed_out "I have been read in the right context".inspect, out
+  end
 end
