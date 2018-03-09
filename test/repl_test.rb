@@ -20,4 +20,10 @@ class REPLTest < Minitest::Test
     out, _err = capture_io { run_with_stdin(stdin) { repl_launch } }
     assert_printed_out "I have been read in the right context".inspect, out
   end
+
+  def test_calling_exit_stops_the_repl
+    stdin = stub_stdin 'puts :hello', 'exit', 'puts :no'
+    capture_io { run_with_stdin(stdin) { repl_launch } }
+    assert_equal 1, stdin.each_line.count
+  end
 end
