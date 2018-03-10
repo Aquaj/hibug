@@ -4,6 +4,7 @@ module REPL
   def repl_launch
     loop do
       code = gets
+      break if code&.strip == 'exit'
       puts current_binding.eval(code).inspect if code
     end
   end
